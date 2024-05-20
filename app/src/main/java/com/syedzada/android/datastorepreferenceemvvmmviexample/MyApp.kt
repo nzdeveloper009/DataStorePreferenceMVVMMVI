@@ -1,7 +1,7 @@
 package com.syedzada.android.datastorepreferenceemvvmmviexample
 
 import android.app.Application
-import com.syedzada.android.datastorepreferencesexample.di.appModule
+import com.syedzada.android.datastorepreferenceemvvmmviexample.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

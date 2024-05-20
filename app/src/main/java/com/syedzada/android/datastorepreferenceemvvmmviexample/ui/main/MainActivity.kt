@@ -8,8 +8,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main)  
 
 
     override fun setupViews() {
-    }
-
-    override fun observeViewModel() {
+        binding.viewModel = diComponent.phonebookViewModel
+        binding.lifecycleOwner = this
     }
 }

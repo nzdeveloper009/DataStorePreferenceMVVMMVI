@@ -5,7 +5,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.syedzada.android.datastorepreferencesexample.di.DIComponent
+import com.syedzada.android.datastorepreferenceemvvmmviexample.di.DIComponent
 
 abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val layoutId: Int) :
     AppCompatActivity() {
@@ -23,11 +23,9 @@ abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val layoutId
         _binding = DataBindingUtil.setContentView(this, layoutId)
         _binding.lifecycleOwner = this // Set the lifecycle owner for LiveData in the binding
         setupViews()
-        observeViewModel()
     }
 
     abstract fun setupViews() // Abstract function to set up views
-    abstract fun observeViewModel() // Abstract function to observe ViewModel
 
     override fun onDestroy() {
         super.onDestroy()
