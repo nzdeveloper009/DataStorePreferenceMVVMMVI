@@ -27,7 +27,7 @@ class ImplRepository(private val context: Context) : Abstract {
         }
     }
 
-    override fun getPhoneBook() = context.dataStore.data.map {preferences ->
+    override suspend fun getPhoneBook() = context.dataStore.data.map { preferences ->
         Phonebook(
             name = preferences[NAME_KEY] ?: return@map null,
             address = preferences[ADDRESS_KEY] ?: return@map null,

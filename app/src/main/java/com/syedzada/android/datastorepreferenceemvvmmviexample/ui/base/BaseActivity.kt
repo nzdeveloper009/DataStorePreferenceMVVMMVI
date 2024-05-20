@@ -21,7 +21,6 @@ abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val layoutId
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, layoutId)
-        _binding.lifecycleOwner = this // Set the lifecycle owner for LiveData in the binding
         setupViews()
     }
 

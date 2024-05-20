@@ -59,7 +59,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_8sdp"
-            android:onClick="@{() -> viewModel.saveData()}"
             android:text="Save" />
 
         <EditText
@@ -88,13 +87,21 @@
             android:inputType="textPersonName"
             android:text="@={viewModel.phonebookAddress}" />
 
+        <Button
+            android:id="@+id/btn_load"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Load" />
+
+
         <TextView
             android:id="@+id/error_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/error"
             android:text="@{viewModel.state instanceof MainViewState.Error ? ((MainViewState.Error) viewModel.state).errorMessage : ``}"
-            android:visibility="@{viewModel.state instanceof MainViewState.Error ? View.VISIBLE : View.GONE}" />
+            android:textColor="@color/error"
+            android:visibility="@{viewModel.state instanceof MainViewState.Error ? View.VISIBLE : View.GONE, default=gone}" />
 
 
     </LinearLayout>
