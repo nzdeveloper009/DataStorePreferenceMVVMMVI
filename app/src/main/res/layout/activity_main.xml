@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.syedzada.android.datastorepreferenceemvvmmviexample.ui.main.MainViewModel" />
+        <!-- Alias for MainViewState -->
+        <import type="com.syedzada.android.datastorepreferenceemvvmmviexample.ui.main.MainViewState" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_16sdp"
+        tools:context=".ui.main.MainActivity">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.state == null || viewModel.state instanceof MainViewState.Loading ? View.VISIBLE : View.GONE, default=gone}" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:text="@={viewModel.name}" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:hint="Phone"
+            android:inputType="phone"
+            android:text="@={viewModel.phone}" />
+
+        <EditText
+            android:id="@+id/et_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:hint="Address"
+            android:inputType="textPersonName"
+            android:text="@={viewModel.address}" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:onClick="@{() -> viewModel.saveData()}"
+            android:text="Save" />
+
+        <EditText
+            android:id="@+id/etx_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:text="@={viewModel.phonebookName}" />
+
+        <EditText
+            android:id="@+id/etx_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:enabled="false"
+            android:inputType="phone"
+            android:text="@={viewModel.phonebookPhone}" />
+
+        <EditText
+            android:id="@+id/etx_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:text="@={viewModel.phonebookAddress}" />
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/error"
+            android:text="@{viewModel.state instanceof MainViewState.Error ? ((MainViewState.Error) viewModel.state).errorMessage : ``}"
+            android:visibility="@{viewModel.state instanceof MainViewState.Error ? View.VISIBLE : View.GONE}" />
+
+
+    </LinearLayout>
+</layout>
